@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# source: http://www.perlmonks.org/?node_id=474564
+
+perl -lwne '
+    BEGIN{ @acc = [];
+           sub median { $_[0]->[ @{$_[0]} / 2 ] };
+    };
+    push(@acc, $_);
+    END{print median(\@acc), "\n";}
+' $@
