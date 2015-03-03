@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+perl -lwne 'BEGIN{$acc = 0;}; $acc += $_; END{print $acc / $.}' $@
