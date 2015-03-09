@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+perl -wlane '
+BEGIN{
+  use JSON;
+  my %acc;
+};
+next if m{^(#.*|\s*)$};
+$acc{$F[0]} = [] unless defined $acc{$F[0]};
+push($acc{$F[0]}, $F[1]);
+END{
+  print JSON->new->utf8(1)->pretty(1)->encode(\%acc);
+};
+' $@
