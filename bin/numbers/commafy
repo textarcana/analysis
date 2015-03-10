@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Pretty print numbers with commas
+
+printf "%'d\n" $@
