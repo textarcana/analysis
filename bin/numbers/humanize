@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Humanize numbers.
+# A shell tool that does the same thing as googling "10000000000 in words."
+
+perl -lwne 'use Lingua::Any::Numbers  qw(:std); print to_string($_)' $@
