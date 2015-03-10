@@ -7,8 +7,8 @@ BEGIN{
 };
 next if m{^(#.*|\s*)$};
 $acc{$F[0]} = {thing => $F[0], value => []} unless defined $acc{$F[0]};
-push($acc{shift @F}{value}, [ @F ]);
-END{
+push($acc{shift @F}{value}, join(" ", @F));
+END {
   print JSON->new->pretty(1)->encode(\%acc);
 };
 ' $@
