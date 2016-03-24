@@ -2,4 +2,4 @@
 
 ## How to run the tests
 
-    bin/collect/values tests/data/collections/tabular.txt
+    bin/reduce tests/data/collections/tabular.txt
