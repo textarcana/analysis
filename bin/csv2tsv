@@ -1,0 +1,14 @@
+#!/usr/bin/env perl -w
+
+use strict;
+
+use Text::ParseWords;
+
+# convert quoted CSV (like that produced by jq) into TSV
+# cf: http://stackoverflow.com/questions/633607/how-can-i-parse-quoted-csv-in-perl-with-a-regex
+
+while (<>) {
+    chomp;
+    my @f = quotewords ',', 0, $_;
+    print join("\t", @f) . "\n";
+}
