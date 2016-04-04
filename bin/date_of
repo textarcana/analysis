@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Format ANY date in ANY format, consistently.
+
+if [ -z "$1" ]
+then
+    echo "Usage: `basename $0` <a date>"
+  exit 1
+fi
+
+result=$(echo "$@" | perl -lwne \
+     '
+use Date::Manip;
+
+my $stamp=ParseDateString("$_");
+
+$stamp=~s{^(\d\d\d\d)(\d\d)(\d\d)}{$1-$2-$3 };
+
+print $stamp . "\n";
+   ' \
+    | xargs -I@ dconv "@")
+
+if [ -z $result ]
+then
+    echo "Couldn't parse: $@" \
+        | perl -ne 'print STDERR'
+    exit 1
+fi
+
+echo $result
